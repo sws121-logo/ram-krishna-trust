@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>raj Krishna Educational and Social Welfare Trust</title>
+    <title>Ram Krishna Educational and Social Welfare Trust</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -84,7 +84,7 @@
             animation: float 6s ease-in-out infinite;
         }
         
-        @keyfrajes float {
+        @keyframes float {
             0% { transform: translateY(0px) translateZ(50px); }
             50% { transform: translateY(-20px) translateZ(50px); }
             100% { transform: translateY(0px) translateZ(50px); }
@@ -284,7 +284,7 @@
             animation: loginFloat 4s ease-in-out infinite;
         }
         
-        @keyfrajes loginFloat {
+        @keyframes loginFloat {
             0% { transform: translateY(0px) rotateY(0deg); }
             50% { transform: translateY(-10px) rotateY(5deg); }
             100% { transform: translateY(0px) rotateY(0deg); }
@@ -334,7 +334,7 @@
             animation: floatAround 15s infinite linear;
         }
         
-        @keyfrajes floatAround {
+        @keyframes floatAround {
             0% { transform: translate(0, 0) rotate(0deg); }
             33% { transform: translate(30px, 50px) rotate(120deg); }
             66% { transform: translate(-20px, 80px) rotate(240deg); }
@@ -417,6 +417,36 @@
             left: 0;
             z-index: -1;
         }
+        
+        .admin-image-preview {
+            max-width: 200px;
+            max-height: 150px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .edit-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .edit-modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
     </style>
 </head>
 <body>
@@ -428,7 +458,7 @@
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="fas fa-hands-helping me-2"></i>
-                raj Krishna Trust
+                <span id="trust-name-nav">Ram Krishna Trust</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -469,8 +499,8 @@
         </div>
         <div class="container">
             <div class="hero-content">
-                <h1 class="display-4 fw-bold mb-4 three-d-text">raj Krishna Educational and Social Welfare Trust</h1>
-                <p class="lead mb-4">Established on 4th March 2015, serving the community with dedication and compassion</p>
+                <h1 class="display-4 fw-bold mb-4 three-d-text" id="hero-title">Ram Krishna Educational and Social Welfare Trust</h1>
+                <p class="lead mb-4" id="hero-subtitle">Established on 4th March 2015, serving the community with dedication and compassion</p>
                 <a href="#about" class="btn btn-primary btn-lg">Learn More</a>
             </div>
         </div>
@@ -483,22 +513,22 @@
             <div class="row">
                 <div class="col-lg-6 mb-4">
                     <div class="image-hover-3d">
-                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Trust Building" class="img-fluid rounded shadow">
+                        <img id="about-image" src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Trust Building" class="img-fluid rounded shadow">
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h3>Our Mission</h3>
-                    <p>raj Krishna Educational and Social Welfare Trust was established on 4th March 2015 with the vision to serve society through education, healthcare, and social welfare initiatives. Our mission is to empower communities and create sustainable development.</p>
+                    <h3 id="about-title">Our Mission</h3>
+                    <p id="about-description">Ram Krishna Educational and Social Welfare Trust was established on 4th March 2015 with the vision to serve society through education, healthcare, and social welfare initiatives. Our mission is to empower communities and create sustainable development.</p>
                     
                     <h4>Trust Details</h4>
-                    <ul>
+                    <ul id="trust-details">
                         <li><strong>Establishment:</strong> 4th March, 2015</li>
                         <li><strong>Address:</strong> Pathra English, Nawada - 805123</li>
                         <li><strong>Field Workers:</strong> 70-75 dedicated volunteers</li>
                     </ul>
                     
                     <h4 class="mt-4">Our Purpose</h4>
-                    <div class="row">
+                    <div class="row" id="trust-purpose">
                         <div class="col-md-6">
                             <ul>
                                 <li>Education Purpose</li>
@@ -557,73 +587,18 @@
     <section id="activities" class="py-5 bg-light">
         <div class="container">
             <h2 class="section-title">Our Activities</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card text-center p-4">
-                        <div class="card-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <h4>Education</h4>
-                        <p>Providing educational resources, books distribution in 126 schools, and supporting educational initiatives for underprivileged children.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card text-center p-4">
-                        <div class="card-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <h4>Healthcare</h4>
-                        <p>Operating a hospital since 2020, free corona checking campaigns, and donations to Nawada Sadar Hospital.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card text-center p-4">
-                        <div class="card-icon">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <h4>Social Services</h4>
-                        <p>Government scheme facilitation, women hospitality, employment generation, and community support prograjs.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-4">
-                    <div class="card text-center p-4">
-                        <div class="card-icon">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <h4>Agriculture & Cow Shelter</h4>
-                        <p>Supporting agricultural initiatives and maintaining cow shelters for community welfare.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card text-center p-4">
-                        <div class="card-icon">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h4>Employment Generation</h4>
-                        <p>Creating employment opportunities through various initiatives including fishing business support.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card text-center p-4">
-                        <div class="card-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h4>Community Building</h4>
-                        <p>Connecting 70-75 field workers to implement various welfare prograjs and government schemes.</p>
-                    </div>
-                </div>
+            <div class="row" id="activities-container">
+                <!-- Activities will be dynamically loaded here -->
             </div>
         </div>
     </section>
 
     <!-- Parallax Section -->
-    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+    <section class="parallax-section" id="parallax-section">
         <div class="container">
             <div class="parallax-content text-center">
-                <h2 class="mb-4 three-d-text">Making a Difference Since 2015</h2>
-                <p class="lead mb-4">Our trust has been actively working towards community development through various initiatives in education, healthcare, and social welfare.</p>
+                <h2 class="mb-4 three-d-text" id="parallax-title">Making a Difference Since 2015</h2>
+                <p class="lead mb-4" id="parallax-description">Our trust has been actively working towards community development through various initiatives in education, healthcare, and social welfare.</p>
                 <a href="#gallery" class="btn btn-secondary btn-lg">View Our Work</a>
             </div>
         </div>
@@ -669,26 +644,26 @@
                         <h4>Contact Information</h4>
                         <div class="mb-4">
                             <h5><i class="fas fa-map-marker-alt text-primary me-2"></i> Address</h5>
-                            <p>Pathra English, Nawada - 805123, Bihar, India</p>
+                            <p id="contact-address">Pathra English, Nawada - 805123, Bihar, India</p>
                         </div>
                         <div class="mb-4">
                             <h5><i class="fas fa-phone text-primary me-2"></i> Phone</h5>
-                            <p>+91 XXXXXXXXXX</p>
+                            <p id="contact-phone">+91 XXXXXXXXXX</p>
                         </div>
                         <div class="mb-4">
                             <h5><i class="fas fa-envelope text-primary me-2"></i> Email</h5>
-                            <p>shrirajkrishnaeduandwelfare@gmail.com</p>
+                            <p id="contact-email">info@ramkrishnatrust.org</p>
                         </div>
                         <div class="mb-4">
                             <h5><i class="fas fa-clock text-primary me-2"></i> Working Hours</h5>
-                            <p>Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                            <p id="contact-hours">Monday - Saturday: 9:00 AM - 6:00 PM</p>
                         </div>
                         <div class="mt-4">
                             <div class="social-icons">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-instagraj"></i></a>
-                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#" id="social-facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" id="social-twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" id="social-instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="#" id="social-youtube"><i class="fab fa-youtube"></i></a>
                             </div>
                         </div>
                     </div>
@@ -702,8 +677,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <h4>raj Krishna Trust</h4>
-                    <p>Educational and Social Welfare Trust established on 4th March 2015, dedicated to serving the community through various initiatives.</p>
+                    <h4 id="footer-trust-name">Ram Krishna Trust</h4>
+                    <p id="footer-description">Educational and Social Welfare Trust established on 4th March 2015, dedicated to serving the community through various initiatives.</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h4>Quick Links</h4>
@@ -718,7 +693,7 @@
                 <div class="col-md-4 mb-4">
                     <h4>Our Activities</h4>
                     <div class="footer-links">
-                        <p><a href="#">Education Prograjs</a></p>
+                        <p><a href="#">Education Programs</a></p>
                         <p><a href="#">Healthcare Initiatives</a></p>
                         <p><a href="#">Social Services</a></p>
                         <p><a href="#">Employment Generation</a></p>
@@ -729,10 +704,10 @@
             <hr class="mt-4 mb-4">
             <div class="row">
                 <div class="col-md-6">
-                    <p>&copy; 2023 raj Krishna Educational and Social Welfare Trust. All Rights Reserved.</p>
+                    <p>&copy; 2023 <span id="footer-copyright">Ram Krishna Educational and Social Welfare Trust</span>. All Rights Reserved.</p>
                 </div>
                 <div class="col-md-6 text-end">
-                    <p>Established on 4th March, 2015</p>
+                    <p>Established on <span id="footer-establishment">4th March, 2015</span></p>
                 </div>
             </div>
         </div>
@@ -777,18 +752,38 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-section="gallery-management">
-                                    <i class="fas fa-images me-2"></i> Gallery Management
+                                <a class="nav-link" href="#" data-section="hero-management">
+                                    <i class="fas fa-home me-2"></i> Hero Section
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-section="about-management">
+                                    <i class="fas fa-info-circle me-2"></i> About Section
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#" data-section="activities-management">
-                                    <i class="fas fa-tasks me-2"></i> Activities Management
+                                    <i class="fas fa-tasks me-2"></i> Activities
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-section="settings">
-                                    <i class="fas fa-cog me-2"></i> Settings
+                                <a class="nav-link" href="#" data-section="gallery-management">
+                                    <i class="fas fa-images me-2"></i> Gallery
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-section="parallax-management">
+                                    <i class="fas fa-image me-2"></i> Parallax Section
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-section="contact-management">
+                                    <i class="fas fa-address-book me-2"></i> Contact Info
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-section="footer-management">
+                                    <i class="fas fa-shoe-prints me-2"></i> Footer
                                 </a>
                             </li>
                             <li class="nav-item mt-4">
@@ -805,13 +800,13 @@
                             <div class="row mt-4">
                                 <div class="col-md-3">
                                     <div class="stats-card">
-                                        <div class="stats-number">45</div>
+                                        <div class="stats-number" id="stats-gallery-count">0</div>
                                         <div class="stats-label">Gallery Images</div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="stats-card">
-                                        <div class="stats-number">8</div>
+                                        <div class="stats-number" id="stats-activities-count">0</div>
                                         <div class="stats-label">Activities</div>
                                     </div>
                                 </div>
@@ -854,8 +849,8 @@
                                             <button class="btn btn-secondary mb-2 w-100" onclick="showSection('activities-management')">
                                                 <i class="fas fa-edit me-2"></i> Edit Activities
                                             </button>
-                                            <button class="btn btn-info mb-2 w-100" onclick="showSection('settings')">
-                                                <i class="fas fa-cog me-2"></i> Update Settings
+                                            <button class="btn btn-info mb-2 w-100" onclick="showSection('hero-management')">
+                                                <i class="fas fa-home me-2"></i> Update Hero Section
                                             </button>
                                         </div>
                                     </div>
@@ -863,56 +858,73 @@
                             </div>
                         </div>
                         
-                        <!-- Gallery Management Section -->
-                        <div id="gallery-management-section" class="d-none">
-                            <h2>Gallery Management</h2>
+                        <!-- Hero Management Section -->
+                        <div id="hero-management-section" class="d-none">
+                            <h2>Hero Section Management</h2>
                             <div class="card mt-4">
                                 <div class="card-header">
-                                    <h5>Add New Image</h5>
+                                    <h5>Update Hero Section</h5>
                                 </div>
                                 <div class="card-body">
-                                    <form id="gallery-form">
+                                    <form id="hero-form">
                                         <div class="mb-3">
-                                            <label for="image-title" class="form-label">Image Title</label>
-                                            <input type="text" class="form-control" id="image-title" required>
+                                            <label for="hero-title" class="form-label">Hero Title</label>
+                                            <input type="text" class="form-control" id="hero-title" value="Ram Krishna Educational and Social Welfare Trust" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="image-date" class="form-label">Date</label>
-                                            <input type="date" class="form-control" id="image-date" required>
+                                            <label for="hero-subtitle" class="form-label">Hero Subtitle</label>
+                                            <textarea class="form-control" id="hero-subtitle" rows="3" required>Established on 4th March 2015, serving the community with dedication and compassion</textarea>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="image-description" class="form-label">Description</label>
-                                            <textarea class="form-control" id="image-description" rows="3" required></textarea>
+                                            <label for="hero-background" class="form-label">Background Image URL</label>
+                                            <input type="text" class="form-control" id="hero-background" value="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                                            <small class="form-text text-muted">Enter a direct URL to an image</small>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="image-upload" class="form-label">Upload Image</label>
-                                            <input type="file" class="form-control" id="image-upload" accept="image/*" required>
+                                            <label for="hero-button-text" class="form-label">Button Text</label>
+                                            <input type="text" class="form-control" id="hero-button-text" value="Learn More">
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Add to Gallery</button>
+                                        <button type="submit" class="btn btn-primary">Update Hero Section</button>
                                     </form>
                                 </div>
                             </div>
-                            
+                        </div>
+                        
+                        <!-- About Management Section -->
+                        <div id="about-management-section" class="d-none">
+                            <h2>About Section Management</h2>
                             <div class="card mt-4">
                                 <div class="card-header">
-                                    <h5>Existing Gallery Images</h5>
+                                    <h5>Update About Section</h5>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Image</th>
-                                                    <th>Title</th>
-                                                    <th>Date</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="gallery-table-body">
-                                                <!-- Gallery items will be loaded here -->
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <form id="about-form">
+                                        <div class="mb-3">
+                                            <label for="about-title" class="form-label">About Title</label>
+                                            <input type="text" class="form-control" id="admin-about-title" value="Our Mission" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="about-description" class="form-label">About Description</label>
+                                            <textarea class="form-control" id="admin-about-description" rows="5" required>Ram Krishna Educational and Social Welfare Trust was established on 4th March 2015 with the vision to serve society through education, healthcare, and social welfare initiatives. Our mission is to empower communities and create sustainable development.</textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="about-image" class="form-label">About Image URL</label>
+                                            <input type="text" class="form-control" id="admin-about-image" value="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="trust-address" class="form-label">Trust Address</label>
+                                            <input type="text" class="form-control" id="admin-trust-address" value="Pathra English, Nawada - 805123">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="trust-establishment" class="form-label">Establishment Date</label>
+                                            <input type="text" class="form-control" id="admin-trust-establishment" value="4th March, 2015">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="trust-field-workers" class="form-label">Field Workers Count</label>
+                                            <input type="text" class="form-control" id="admin-trust-field-workers" value="70-75 dedicated volunteers">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Update About Section</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -922,7 +934,7 @@
                             <h2>Activities Management</h2>
                             <div class="card mt-4">
                                 <div class="card-header">
-                                    <h5>Edit Activities</h5>
+                                    <h5>Add New Activity</h5>
                                 </div>
                                 <div class="card-body">
                                     <form id="activities-form">
@@ -967,32 +979,165 @@
                             </div>
                         </div>
                         
-                        <!-- Settings Section -->
-                        <div id="settings-section" class="d-none">
-                            <h2>Trust Settings</h2>
+                        <!-- Gallery Management Section -->
+                        <div id="gallery-management-section" class="d-none">
+                            <h2>Gallery Management</h2>
                             <div class="card mt-4">
                                 <div class="card-header">
-                                    <h5>Trust Information</h5>
+                                    <h5>Add New Image</h5>
                                 </div>
                                 <div class="card-body">
-                                    <form id="trust-info-form">
+                                    <form id="gallery-form">
                                         <div class="mb-3">
-                                            <label for="trust-name" class="form-label">Trust Name</label>
-                                            <input type="text" class="form-control" id="trust-name" value="raj Krishna Educational and Social Welfare Trust" required>
+                                            <label for="image-title" class="form-label">Image Title</label>
+                                            <input type="text" class="form-control" id="image-title" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="trust-address" class="form-label">Address</label>
-                                            <input type="text" class="form-control" id="trust-address" value="Pathra English, Nawada - 805123" required>
+                                            <label for="image-date" class="form-label">Date</label>
+                                            <input type="date" class="form-control" id="image-date" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="trust-establishment" class="form-label">Establishment Date</label>
-                                            <input type="date" class="form-control" id="trust-establishment" value="2015-03-04" required>
+                                            <label for="image-description" class="form-label">Description</label>
+                                            <textarea class="form-control" id="image-description" rows="3" required></textarea>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="trust-purpose" class="form-label">Purpose</label>
-                                            <textarea class="form-control" id="trust-purpose" rows="4" required>Education purpose, health sector, social services, sports, religions, cow shelter, agriculture</textarea>
+                                            <label for="image-url" class="form-label">Image URL</label>
+                                            <input type="text" class="form-control" id="image-url" required>
+                                            <small class="form-text text-muted">Enter a direct URL to an image</small>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Update Information</button>
+                                        <button type="submit" class="btn btn-primary">Add to Gallery</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div class="card mt-4">
+                                <div class="card-header">
+                                    <h5>Existing Gallery Images</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Image</th>
+                                                    <th>Title</th>
+                                                    <th>Date</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="gallery-table-body">
+                                                <!-- Gallery items will be loaded here -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Parallax Management Section -->
+                        <div id="parallax-management-section" class="d-none">
+                            <h2>Parallax Section Management</h2>
+                            <div class="card mt-4">
+                                <div class="card-header">
+                                    <h5>Update Parallax Section</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form id="parallax-form">
+                                        <div class="mb-3">
+                                            <label for="parallax-title" class="form-label">Parallax Title</label>
+                                            <input type="text" class="form-control" id="parallax-title" value="Making a Difference Since 2015" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="parallax-description" class="form-label">Parallax Description</label>
+                                            <textarea class="form-control" id="parallax-description" rows="3" required>Our trust has been actively working towards community development through various initiatives in education, healthcare, and social welfare.</textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="parallax-background" class="form-label">Background Image URL</label>
+                                            <input type="text" class="form-control" id="parallax-background" value="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="parallax-button-text" class="form-label">Button Text</label>
+                                            <input type="text" class="form-control" id="parallax-button-text" value="View Our Work">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Update Parallax Section</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Management Section -->
+                        <div id="contact-management-section" class="d-none">
+                            <h2>Contact Information Management</h2>
+                            <div class="card mt-4">
+                                <div class="card-header">
+                                    <h5>Update Contact Information</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form id="contact-info-form">
+                                        <div class="mb-3">
+                                            <label for="contact-address" class="form-label">Address</label>
+                                            <input type="text" class="form-control" id="admin-contact-address" value="Pathra English, Nawada - 805123, Bihar, India" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="contact-phone" class="form-label">Phone</label>
+                                            <input type="text" class="form-control" id="admin-contact-phone" value="+91 XXXXXXXXXX" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="contact-email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="admin-contact-email" value="info@ramkrishnatrust.org" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="contact-hours" class="form-label">Working Hours</label>
+                                            <input type="text" class="form-control" id="admin-contact-hours" value="Monday - Saturday: 9:00 AM - 6:00 PM" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="social-facebook" class="form-label">Facebook URL</label>
+                                            <input type="text" class="form-control" id="admin-social-facebook" value="#">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="social-twitter" class="form-label">Twitter URL</label>
+                                            <input type="text" class="form-control" id="admin-social-twitter" value="#">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="social-instagram" class="form-label">Instagram URL</label>
+                                            <input type="text" class="form-control" id="admin-social-instagram" value="#">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="social-youtube" class="form-label">YouTube URL</label>
+                                            <input type="text" class="form-control" id="admin-social-youtube" value="#">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Update Contact Information</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Footer Management Section -->
+                        <div id="footer-management-section" class="d-none">
+                            <h2>Footer Management</h2>
+                            <div class="card mt-4">
+                                <div class="card-header">
+                                    <h5>Update Footer Information</h5>
+                                </div>
+                                <div class="card-body">
+                                    <form id="footer-form">
+                                        <div class="mb-3">
+                                            <label for="footer-trust-name" class="form-label">Trust Name in Footer</label>
+                                            <input type="text" class="form-control" id="admin-footer-trust-name" value="Ram Krishna Trust" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="footer-description" class="form-label">Footer Description</label>
+                                            <textarea class="form-control" id="admin-footer-description" rows="3" required>Educational and Social Welfare Trust established on 4th March 2015, dedicated to serving the community through various initiatives.</textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="footer-copyright" class="form-label">Copyright Text</label>
+                                            <input type="text" class="form-control" id="admin-footer-copyright" value="Ram Krishna Educational and Social Welfare Trust" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="footer-establishment" class="form-label">Establishment Date in Footer</label>
+                                            <input type="text" class="form-control" id="admin-footer-establishment" value="4th March, 2015" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Update Footer Information</button>
                                     </form>
                                 </div>
                             </div>
@@ -1040,104 +1185,143 @@
             }
         });
 
-        // Sample data for the gallery
-        const galleryData = [
-            {
-                id: 1,
-                title: "Hospital Inauguration",
-                date: "2020-03-15",
-                description: "Inauguration of our trust hospital in Nawada",
-                image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+        // Data storage for the website
+        let websiteData = {
+            hero: {
+                title: "Ram Krishna Educational and Social Welfare Trust",
+                subtitle: "Established on 4th March 2015, serving the community with dedication and compassion",
+                background: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                buttonText: "Learn More"
             },
-            {
-                id: 2,
-                title: "Book Distribution",
-                date: "2021-01-20",
-                description: "Distribution of books to students in local schools",
-                image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            about: {
+                title: "Our Mission",
+                description: "Ram Krishna Educational and Social Welfare Trust was established on 4th March 2015 with the vision to serve society through education, healthcare, and social welfare initiatives. Our mission is to empower communities and create sustainable development.",
+                image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                address: "Pathra English, Nawada - 805123",
+                establishment: "4th March, 2015",
+                fieldWorkers: "70-75 dedicated volunteers"
             },
-            {
-                id: 3,
-                title: "COVID-19 Relief",
-                date: "2021-05-10",
-                description: "Free corona checking campaign and distribution of essentials",
-                image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            activities: [
+                {
+                    id: 1,
+                    title: "Education",
+                    description: "Providing educational resources, books distribution in 126 schools, and supporting educational initiatives for underprivileged children.",
+                    icon: "fas fa-book"
+                },
+                {
+                    id: 2,
+                    title: "Healthcare",
+                    description: "Operating a hospital since 2020, free corona checking campaigns, and donations to Nawada Sadar Hospital.",
+                    icon: "fas fa-heartbeat"
+                },
+                {
+                    id: 3,
+                    title: "Social Services",
+                    description: "Government scheme facilitation, women hospitality, employment generation, and community support programs.",
+                    icon: "fas fa-hands-helping"
+                },
+                {
+                    id: 4,
+                    title: "Agriculture & Cow Shelter",
+                    description: "Supporting agricultural initiatives and maintaining cow shelters for community welfare.",
+                    icon: "fas fa-seedling"
+                },
+                {
+                    id: 5,
+                    title: "Employment Generation",
+                    description: "Creating employment opportunities through various initiatives including fishing business support.",
+                    icon: "fas fa-briefcase"
+                },
+                {
+                    id: 6,
+                    title: "Community Building",
+                    description: "Connecting 70-75 field workers to implement various welfare programs and government schemes.",
+                    icon: "fas fa-users"
+                }
+            ],
+            gallery: [
+                {
+                    id: 1,
+                    title: "Hospital Inauguration",
+                    date: "2020-03-15",
+                    description: "Inauguration of our trust hospital in Nawada",
+                    image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 2,
+                    title: "Book Distribution",
+                    date: "2021-01-20",
+                    description: "Distribution of books to students in local schools",
+                    image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 3,
+                    title: "COVID-19 Relief",
+                    date: "2021-05-10",
+                    description: "Free corona checking campaign and distribution of essentials",
+                    image: "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 4,
+                    title: "Women Empowerment",
+                    date: "2022-03-08",
+                    description: "Hospitality and skill development programs for women",
+                    image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 5,
+                    title: "Agricultural Support",
+                    date: "2022-07-15",
+                    description: "Supporting local farmers with resources and training",
+                    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                },
+                {
+                    id: 6,
+                    title: "Fishing Business Initiative",
+                    date: "2023-02-20",
+                    description: "Launch of fishing business support program",
+                    image: "https://images.unsplash.com/photo-1599058917765-ab6c127d96f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                }
+            ],
+            parallax: {
+                title: "Making a Difference Since 2015",
+                description: "Our trust has been actively working towards community development through various initiatives in education, healthcare, and social welfare.",
+                background: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                buttonText: "View Our Work"
             },
-            {
-                id: 4,
-                title: "Women Empowerment",
-                date: "2022-03-08",
-                description: "Hospitality and skill development prograjs for women",
-                image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            contact: {
+                address: "Pathra English, Nawada - 805123, Bihar, India",
+                phone: "+91 XXXXXXXXXX",
+                email: "info@ramkrishnatrust.org",
+                hours: "Monday - Saturday: 9:00 AM - 6:00 PM",
+                social: {
+                    facebook: "#",
+                    twitter: "#",
+                    instagram: "#",
+                    youtube: "#"
+                }
             },
-            {
-                id: 5,
-                title: "Agricultural Support",
-                date: "2022-07-15",
-                description: "Supporting local farmers with resources and training",
-                image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-            },
-            {
-                id: 6,
-                title: "Fishing Business Initiative",
-                date: "2023-02-20",
-                description: "Launch of fishing business support prograj",
-                image: "https://images.unsplash.com/photo-1599058917765-ab6c127d96f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            footer: {
+                trustName: "Ram Krishna Trust",
+                description: "Educational and Social Welfare Trust established on 4th March 2015, dedicated to serving the community through various initiatives.",
+                copyright: "Ram Krishna Educational and Social Welfare Trust",
+                establishment: "4th March, 2015"
             }
-        ];
-
-        // Sample activities data
-        const activitiesData = [
-            {
-                id: 1,
-                title: "Education",
-                description: "Providing educational resources, books distribution in 126 schools, and supporting educational initiatives for underprivileged children.",
-                icon: "fas fa-book"
-            },
-            {
-                id: 2,
-                title: "Healthcare",
-                description: "Operating a hospital since 2020, free corona checking campaigns, and donations to Nawada Sadar Hospital.",
-                icon: "fas fa-heartbeat"
-            },
-            {
-                id: 3,
-                title: "Social Services",
-                description: "Government scheme facilitation, women hospitality, employment generation, and community support prograjs.",
-                icon: "fas fa-hands-helping"
-            },
-            {
-                id: 4,
-                title: "Agriculture & Cow Shelter",
-                description: "Supporting agricultural initiatives and maintaining cow shelters for community welfare.",
-                icon: "fas fa-seedling"
-            },
-            {
-                id: 5,
-                title: "Employment Generation",
-                description: "Creating employment opportunities through various initiatives including fishing business support.",
-                icon: "fas fa-briefcase"
-            },
-            {
-                id: 6,
-                title: "Community Building",
-                description: "Connecting 70-75 field workers to implement various welfare prograjs and government schemes.",
-                icon: "fas fa-users"
-            }
-        ];
+        };
 
         // Initialize the website
         document.addEventListener('DOMContentLoaded', function() {
-            loadGallery();
-            loadRecentGallery();
-            loadGalleryTable();
-            loadActivitiesTable();
-            initCounterAnimation();
+            // Load all website data
+            loadWebsiteData();
             
             // Set up form submissions
-            document.getElementById('gallery-form').addEventListener('submit', addGalleryItem);
+            document.getElementById('hero-form').addEventListener('submit', updateHeroSection);
+            document.getElementById('about-form').addEventListener('submit', updateAboutSection);
             document.getElementById('activities-form').addEventListener('submit', addActivity);
-            document.getElementById('trust-info-form').addEventListener('submit', updateTrustInfo);
+            document.getElementById('gallery-form').addEventListener('submit', addGalleryItem);
+            document.getElementById('parallax-form').addEventListener('submit', updateParallaxSection);
+            document.getElementById('contact-info-form').addEventListener('submit', updateContactInfo);
+            document.getElementById('footer-form').addEventListener('submit', updateFooterInfo);
             document.getElementById('admin-login-form').addEventListener('submit', loginAdmin);
             document.getElementById('contact-form').addEventListener('submit', submitContactForm);
             
@@ -1164,14 +1348,87 @@
                     document.querySelector('.navbar').classList.remove('scrolled');
                 }
             });
+            
+            // Initialize counter animation
+            initCounterAnimation();
         });
+
+        // Load all website data
+        function loadWebsiteData() {
+            // Load hero section
+            document.getElementById('hero-title').textContent = websiteData.hero.title;
+            document.getElementById('hero-subtitle').textContent = websiteData.hero.subtitle;
+            document.querySelector('.hero-section').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${websiteData.hero.background}')`;
+            
+            // Load about section
+            document.getElementById('about-title').textContent = websiteData.about.title;
+            document.getElementById('about-description').textContent = websiteData.about.description;
+            document.getElementById('about-image').src = websiteData.about.image;
+            document.getElementById('trust-details').innerHTML = `
+                <li><strong>Establishment:</strong> ${websiteData.about.establishment}</li>
+                <li><strong>Address:</strong> ${websiteData.about.address}</li>
+                <li><strong>Field Workers:</strong> ${websiteData.about.fieldWorkers}</li>
+            `;
+            
+            // Load activities
+            loadActivities();
+            
+            // Load gallery
+            loadGallery();
+            
+            // Load parallax section
+            document.getElementById('parallax-title').textContent = websiteData.parallax.title;
+            document.getElementById('parallax-description').textContent = websiteData.parallax.description;
+            document.getElementById('parallax-section').style.backgroundImage = `url('${websiteData.parallax.background}')`;
+            
+            // Load contact information
+            document.getElementById('contact-address').textContent = websiteData.contact.address;
+            document.getElementById('contact-phone').textContent = websiteData.contact.phone;
+            document.getElementById('contact-email').textContent = websiteData.contact.email;
+            document.getElementById('contact-hours').textContent = websiteData.contact.hours;
+            
+            // Load footer
+            document.getElementById('footer-trust-name').textContent = websiteData.footer.trustName;
+            document.getElementById('footer-description').textContent = websiteData.footer.description;
+            document.getElementById('footer-copyright').textContent = websiteData.footer.copyright;
+            document.getElementById('footer-establishment').textContent = websiteData.footer.establishment;
+            
+            // Update admin forms with current data
+            updateAdminForms();
+        }
+
+        // Load activities on the main page
+        function loadActivities() {
+            const container = document.getElementById('activities-container');
+            container.innerHTML = '';
+            
+            websiteData.activities.forEach(activity => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4';
+                
+                col.innerHTML = `
+                    <div class="card text-center p-4">
+                        <div class="card-icon">
+                            <i class="${activity.icon}"></i>
+                        </div>
+                        <h4>${activity.title}</h4>
+                        <p>${activity.description}</p>
+                    </div>
+                `;
+                
+                container.appendChild(col);
+            });
+            
+            // Update admin stats
+            document.getElementById('stats-activities-count').textContent = websiteData.activities.length;
+        }
 
         // Load gallery on the main page
         function loadGallery() {
             const container = document.getElementById('gallery-container');
             container.innerHTML = '';
             
-            galleryData.forEach(item => {
+            websiteData.gallery.forEach(item => {
                 const col = document.createElement('div');
                 col.className = 'col-md-4';
                 
@@ -1188,6 +1445,15 @@
                 
                 container.appendChild(col);
             });
+            
+            // Update admin stats
+            document.getElementById('stats-gallery-count').textContent = websiteData.gallery.length;
+            
+            // Load recent gallery in admin panel
+            loadRecentGallery();
+            
+            // Load gallery table in admin panel
+            loadGalleryTable();
         }
 
         // Load recent gallery in admin panel
@@ -1196,7 +1462,7 @@
             container.innerHTML = '';
             
             // Get the 3 most recent items
-            const recentItems = [...galleryData].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+            const recentItems = [...websiteData.gallery].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
             
             recentItems.forEach(item => {
                 const li = document.createElement('li');
@@ -1219,7 +1485,7 @@
             const tbody = document.getElementById('gallery-table-body');
             tbody.innerHTML = '';
             
-            galleryData.forEach(item => {
+            websiteData.gallery.forEach(item => {
                 const tr = document.createElement('tr');
                 
                 tr.innerHTML = `
@@ -1227,7 +1493,7 @@
                     <td>${item.title}</td>
                     <td>${formatDate(item.date)}</td>
                     <td>
-                        <button class="btn btn-sm btn-primary me-1">Edit</button>
+                        <button class="btn btn-sm btn-primary me-1" onclick="editGalleryItem(${item.id})">Edit</button>
                         <button class="btn btn-sm btn-danger" onclick="deleteGalleryItem(${item.id})">Delete</button>
                     </td>
                 `;
@@ -1241,7 +1507,7 @@
             const tbody = document.getElementById('activities-table-body');
             tbody.innerHTML = '';
             
-            activitiesData.forEach(item => {
+            websiteData.activities.forEach(item => {
                 const tr = document.createElement('tr');
                 
                 tr.innerHTML = `
@@ -1249,13 +1515,55 @@
                     <td>${item.title}</td>
                     <td>${item.description.substring(0, 100)}...</td>
                     <td>
-                        <button class="btn btn-sm btn-primary me-1">Edit</button>
+                        <button class="btn btn-sm btn-primary me-1" onclick="editActivity(${item.id})">Edit</button>
                         <button class="btn btn-sm btn-danger" onclick="deleteActivity(${item.id})">Delete</button>
                     </td>
                 `;
                 
                 tbody.appendChild(tr);
             });
+        }
+
+        // Update admin forms with current data
+        function updateAdminForms() {
+            // Hero form
+            document.getElementById('hero-title').value = websiteData.hero.title;
+            document.getElementById('hero-subtitle').value = websiteData.hero.subtitle;
+            document.getElementById('hero-background').value = websiteData.hero.background;
+            document.getElementById('hero-button-text').value = websiteData.hero.buttonText;
+            
+            // About form
+            document.getElementById('admin-about-title').value = websiteData.about.title;
+            document.getElementById('admin-about-description').value = websiteData.about.description;
+            document.getElementById('admin-about-image').value = websiteData.about.image;
+            document.getElementById('admin-trust-address').value = websiteData.about.address;
+            document.getElementById('admin-trust-establishment').value = websiteData.about.establishment;
+            document.getElementById('admin-trust-field-workers').value = websiteData.about.fieldWorkers;
+            
+            // Parallax form
+            document.getElementById('parallax-title').value = websiteData.parallax.title;
+            document.getElementById('parallax-description').value = websiteData.parallax.description;
+            document.getElementById('parallax-background').value = websiteData.parallax.background;
+            document.getElementById('parallax-button-text').value = websiteData.parallax.buttonText;
+            
+            // Contact form
+            document.getElementById('admin-contact-address').value = websiteData.contact.address;
+            document.getElementById('admin-contact-phone').value = websiteData.contact.phone;
+            document.getElementById('admin-contact-email').value = websiteData.contact.email;
+            document.getElementById('admin-contact-hours').value = websiteData.contact.hours;
+            document.getElementById('admin-social-facebook').value = websiteData.contact.social.facebook;
+            document.getElementById('admin-social-twitter').value = websiteData.contact.social.twitter;
+            document.getElementById('admin-social-instagram').value = websiteData.contact.social.instagram;
+            document.getElementById('admin-social-youtube').value = websiteData.contact.social.youtube;
+            
+            // Footer form
+            document.getElementById('admin-footer-trust-name').value = websiteData.footer.trustName;
+            document.getElementById('admin-footer-description').value = websiteData.footer.description;
+            document.getElementById('admin-footer-copyright').value = websiteData.footer.copyright;
+            document.getElementById('admin-footer-establishment').value = websiteData.footer.establishment;
+            
+            // Load activities table
+            loadActivitiesTable();
         }
 
         // Format date for display
@@ -1335,40 +1643,45 @@
             document.getElementById(`${section}-section`).classList.remove('d-none');
         }
 
-        // Add new gallery item
-        function addGalleryItem(e) {
+        // Update hero section
+        function updateHeroSection(e) {
             e.preventDefault();
             
-            const title = document.getElementById('image-title').value;
-            const date = document.getElementById('image-date').value;
-            const description = document.getElementById('image-description').value;
-            const fileInput = document.getElementById('image-upload');
+            websiteData.hero.title = document.getElementById('hero-title').value;
+            websiteData.hero.subtitle = document.getElementById('hero-subtitle').value;
+            websiteData.hero.background = document.getElementById('hero-background').value;
+            websiteData.hero.buttonText = document.getElementById('hero-button-text').value;
             
-            // In a real application, you would upload the file to a server
-            // For this demo, we'll use a placeholder image
-            const imageUrl = 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';
+            // Update website
+            document.getElementById('hero-title').textContent = websiteData.hero.title;
+            document.getElementById('hero-subtitle').textContent = websiteData.hero.subtitle;
+            document.querySelector('.hero-section').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${websiteData.hero.background}')`;
             
-            // Create new gallery item
-            const newItem = {
-                id: galleryData.length + 1,
-                title,
-                date,
-                description,
-                image: imageUrl
-            };
+            alert('Hero section updated successfully!');
+        }
+
+        // Update about section
+        function updateAboutSection(e) {
+            e.preventDefault();
             
-            // Add to gallery data
-            galleryData.push(newItem);
+            websiteData.about.title = document.getElementById('admin-about-title').value;
+            websiteData.about.description = document.getElementById('admin-about-description').value;
+            websiteData.about.image = document.getElementById('admin-about-image').value;
+            websiteData.about.address = document.getElementById('admin-trust-address').value;
+            websiteData.about.establishment = document.getElementById('admin-trust-establishment').value;
+            websiteData.about.fieldWorkers = document.getElementById('admin-trust-field-workers').value;
             
-            // Reload gallery displays
-            loadGallery();
-            loadRecentGallery();
-            loadGalleryTable();
+            // Update website
+            document.getElementById('about-title').textContent = websiteData.about.title;
+            document.getElementById('about-description').textContent = websiteData.about.description;
+            document.getElementById('about-image').src = websiteData.about.image;
+            document.getElementById('trust-details').innerHTML = `
+                <li><strong>Establishment:</strong> ${websiteData.about.establishment}</li>
+                <li><strong>Address:</strong> ${websiteData.about.address}</li>
+                <li><strong>Field Workers:</strong> ${websiteData.about.fieldWorkers}</li>
+            `;
             
-            // Reset form
-            document.getElementById('gallery-form').reset();
-            
-            alert('Gallery item added successfully!');
+            alert('About section updated successfully!');
         }
 
         // Add new activity
@@ -1381,16 +1694,17 @@
             
             // Create new activity
             const newActivity = {
-                id: activitiesData.length + 1,
+                id: websiteData.activities.length + 1,
                 title,
                 description,
                 icon
             };
             
             // Add to activities data
-            activitiesData.push(newActivity);
+            websiteData.activities.push(newActivity);
             
-            // Reload activities table
+            // Reload activities
+            loadActivities();
             loadActivitiesTable();
             
             // Reset form
@@ -1399,44 +1713,226 @@
             alert('Activity added successfully!');
         }
 
-        // Update trust information
-        function updateTrustInfo(e) {
-            e.preventDefault();
+        // Edit activity
+        function editActivity(id) {
+            const activity = websiteData.activities.find(a => a.id === id);
+            if (!activity) return;
             
-            const name = document.getElementById('trust-name').value;
-            const address = document.getElementById('trust-address').value;
-            const establishment = document.getElementById('trust-establishment').value;
-            const purpose = document.getElementById('trust-purpose').value;
+            // Create edit modal
+            const modal = document.createElement('div');
+            modal.className = 'edit-modal';
+            modal.innerHTML = `
+                <div class="edit-modal-content">
+                    <h3>Edit Activity</h3>
+                    <form id="edit-activity-form">
+                        <div class="mb-3">
+                            <label for="edit-activity-title" class="form-label">Activity Title</label>
+                            <input type="text" class="form-control" id="edit-activity-title" value="${activity.title}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-activity-description" class="form-label">Description</label>
+                            <textarea class="form-control" id="edit-activity-description" rows="3" required>${activity.description}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-activity-icon" class="form-label">Icon Class (FontAwesome)</label>
+                            <input type="text" class="form-control" id="edit-activity-icon" value="${activity.icon}" required>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-secondary" onclick="this.closest('.edit-modal').remove()">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Update Activity</button>
+                        </div>
+                    </form>
+                </div>
+            `;
             
-            // In a real application, this would update the database
-            // For this demo, we'll just show a success message
-            alert('Trust information updated successfully!');
-        }
-
-        // Delete gallery item
-        function deleteGalleryItem(id) {
-            if (confirm('Are you sure you want to delete this gallery item?')) {
-                const index = galleryData.findIndex(item => item.id === id);
-                if (index !== -1) {
-                    galleryData.splice(index, 1);
-                    loadGallery();
-                    loadRecentGallery();
-                    loadGalleryTable();
-                    alert('Gallery item deleted successfully!');
-                }
-            }
+            document.body.appendChild(modal);
+            
+            // Handle form submission
+            document.getElementById('edit-activity-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                activity.title = document.getElementById('edit-activity-title').value;
+                activity.description = document.getElementById('edit-activity-description').value;
+                activity.icon = document.getElementById('edit-activity-icon').value;
+                
+                // Reload activities
+                loadActivities();
+                loadActivitiesTable();
+                
+                // Remove modal
+                modal.remove();
+                
+                alert('Activity updated successfully!');
+            });
         }
 
         // Delete activity
         function deleteActivity(id) {
             if (confirm('Are you sure you want to delete this activity?')) {
-                const index = activitiesData.findIndex(item => item.id === id);
+                const index = websiteData.activities.findIndex(item => item.id === id);
                 if (index !== -1) {
-                    activitiesData.splice(index, 1);
+                    websiteData.activities.splice(index, 1);
+                    loadActivities();
                     loadActivitiesTable();
                     alert('Activity deleted successfully!');
                 }
             }
+        }
+
+        // Add new gallery item
+        function addGalleryItem(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('image-title').value;
+            const date = document.getElementById('image-date').value;
+            const description = document.getElementById('image-description').value;
+            const imageUrl = document.getElementById('image-url').value;
+            
+            // Create new gallery item
+            const newItem = {
+                id: websiteData.gallery.length + 1,
+                title,
+                date,
+                description,
+                image: imageUrl
+            };
+            
+            // Add to gallery data
+            websiteData.gallery.push(newItem);
+            
+            // Reload gallery
+            loadGallery();
+            
+            // Reset form
+            document.getElementById('gallery-form').reset();
+            
+            alert('Gallery item added successfully!');
+        }
+
+        // Edit gallery item
+        function editGalleryItem(id) {
+            const item = websiteData.gallery.find(g => g.id === id);
+            if (!item) return;
+            
+            // Create edit modal
+            const modal = document.createElement('div');
+            modal.className = 'edit-modal';
+            modal.innerHTML = `
+                <div class="edit-modal-content">
+                    <h3>Edit Gallery Item</h3>
+                    <form id="edit-gallery-form">
+                        <div class="mb-3">
+                            <label for="edit-image-title" class="form-label">Image Title</label>
+                            <input type="text" class="form-control" id="edit-image-title" value="${item.title}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-image-date" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="edit-image-date" value="${item.date}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-image-description" class="form-label">Description</label>
+                            <textarea class="form-control" id="edit-image-description" rows="3" required>${item.description}</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-image-url" class="form-label">Image URL</label>
+                            <input type="text" class="form-control" id="edit-image-url" value="${item.image}" required>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-secondary" onclick="this.closest('.edit-modal').remove()">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Update Gallery Item</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Handle form submission
+            document.getElementById('edit-gallery-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                item.title = document.getElementById('edit-image-title').value;
+                item.date = document.getElementById('edit-image-date').value;
+                item.description = document.getElementById('edit-image-description').value;
+                item.image = document.getElementById('edit-image-url').value;
+                
+                // Reload gallery
+                loadGallery();
+                
+                // Remove modal
+                modal.remove();
+                
+                alert('Gallery item updated successfully!');
+            });
+        }
+
+        // Delete gallery item
+        function deleteGalleryItem(id) {
+            if (confirm('Are you sure you want to delete this gallery item?')) {
+                const index = websiteData.gallery.findIndex(item => item.id === id);
+                if (index !== -1) {
+                    websiteData.gallery.splice(index, 1);
+                    loadGallery();
+                    alert('Gallery item deleted successfully!');
+                }
+            }
+        }
+
+        // Update parallax section
+        function updateParallaxSection(e) {
+            e.preventDefault();
+            
+            websiteData.parallax.title = document.getElementById('parallax-title').value;
+            websiteData.parallax.description = document.getElementById('parallax-description').value;
+            websiteData.parallax.background = document.getElementById('parallax-background').value;
+            websiteData.parallax.buttonText = document.getElementById('parallax-button-text').value;
+            
+            // Update website
+            document.getElementById('parallax-title').textContent = websiteData.parallax.title;
+            document.getElementById('parallax-description').textContent = websiteData.parallax.description;
+            document.getElementById('parallax-section').style.backgroundImage = `url('${websiteData.parallax.background}')`;
+            
+            alert('Parallax section updated successfully!');
+        }
+
+        // Update contact information
+        function updateContactInfo(e) {
+            e.preventDefault();
+            
+            websiteData.contact.address = document.getElementById('admin-contact-address').value;
+            websiteData.contact.phone = document.getElementById('admin-contact-phone').value;
+            websiteData.contact.email = document.getElementById('admin-contact-email').value;
+            websiteData.contact.hours = document.getElementById('admin-contact-hours').value;
+            websiteData.contact.social.facebook = document.getElementById('admin-social-facebook').value;
+            websiteData.contact.social.twitter = document.getElementById('admin-social-twitter').value;
+            websiteData.contact.social.instagram = document.getElementById('admin-social-instagram').value;
+            websiteData.contact.social.youtube = document.getElementById('admin-social-youtube').value;
+            
+            // Update website
+            document.getElementById('contact-address').textContent = websiteData.contact.address;
+            document.getElementById('contact-phone').textContent = websiteData.contact.phone;
+            document.getElementById('contact-email').textContent = websiteData.contact.email;
+            document.getElementById('contact-hours').textContent = websiteData.contact.hours;
+            
+            alert('Contact information updated successfully!');
+        }
+
+        // Update footer information
+        function updateFooterInfo(e) {
+            e.preventDefault();
+            
+            websiteData.footer.trustName = document.getElementById('admin-footer-trust-name').value;
+            websiteData.footer.description = document.getElementById('admin-footer-description').value;
+            websiteData.footer.copyright = document.getElementById('admin-footer-copyright').value;
+            websiteData.footer.establishment = document.getElementById('admin-footer-establishment').value;
+            
+            // Update website
+            document.getElementById('footer-trust-name').textContent = websiteData.footer.trustName;
+            document.getElementById('footer-description').textContent = websiteData.footer.description;
+            document.getElementById('footer-copyright').textContent = websiteData.footer.copyright;
+            document.getElementById('footer-establishment').textContent = websiteData.footer.establishment;
+            
+            alert('Footer information updated successfully!');
         }
 
         // Submit contact form
